@@ -42,7 +42,7 @@ add wave -noupdate -divider -height 32 "FSM"
 add wave -hex /stimulus/dut/y
 add wave -hex /stimulus/dut/reset
 add wave -hex /stimulus/dut/clk
-add wave -hex /stimulus/dut/a
+add wave -hex /stimulus/dut/in
 add wave -hex /stimulus/dut/state
 add wave -hex /stimulus/dut/nextstate
 
