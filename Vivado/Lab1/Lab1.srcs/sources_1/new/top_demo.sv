@@ -28,24 +28,21 @@ module top_demo
   input  logic       sysclk_125mhz,
   input  logic       rst,
   // output  
-  output logic [7:0] led,
-  output logic sseg_ca,
-  output logic sseg_cb,
-  output logic sseg_cc,
-  output logic sseg_cd,
-  output logic sseg_ce,
-  output logic sseg_cf,
-  output logic sseg_cg,
-  output logic sseg_dp,
-  output logic [3:0] sseg_an
+  output logic [7:0] led
 );
 
   logic [16:0] CURRENT_COUNT;
   logic [16:0] NEXT_COUNT;
   logic        smol_clk;
+  logic        big_clk;
+  clk_div div(sysclk_125mhz, btn[0], big_clk);
   
-  // Place TicTacToe instantiation here
+
   
+  FSM fsm(big_clk, btn[0], sw[1:0], led[5:0]);
+
+/*
+
   // 7-segment display
   segment_driver driver(
   .clk(smol_clk),
@@ -58,6 +55,7 @@ module top_demo
   .segment_cathodes({sseg_dp, sseg_cg, sseg_cf, sseg_ce, sseg_cd, sseg_cc, sseg_cb, sseg_ca}),
   .digit_anodes(sseg_an)
   );
+*/
 
 // Register logic storing clock counts
   always@(posedge sysclk_125mhz)

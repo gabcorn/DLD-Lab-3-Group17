@@ -39,6 +39,8 @@ module stimulus ();
      #0   reset = 1'b1;
      #10  reset = 1'b0;
 	#41   in = 2'b01;
+     #41   in = 2'b10;
+     #41   in = 2'b11;
      end
 
 endmodule // FSM_tb

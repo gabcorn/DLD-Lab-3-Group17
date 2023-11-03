@@ -13,17 +13,17 @@
 # //
 # do fsm.do
 # Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 17:08:41 on Oct 27,2023
+# Start time: 15:35:48 on Nov 03,2023
 # vlog -reportprogress 300 fsm.sv fsm_tb.sv 
 # -- Compiling module FSM
 # -- Compiling module stimulus
 # 
 # Top level modules:
 # 	stimulus
-# End time: 17:08:41 on Oct 27,2023, Elapsed time: 0:00:00
+# End time: 15:35:48 on Nov 03,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -voptargs="+acc" work.stimulus 
-# Start time: 17:08:41 on Oct 27,2023
+# Start time: 15:35:48 on Nov 03,2023
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vopt-143) Recognized 1 FSM in module "FSM(fast)".
 # Loading sv_std.std
@@ -31,5 +31,5 @@
 # Loading work.FSM(fast)
 # .main_pane.list.interior.cs.body
 # .main_pane.wave.interior.cs.body.pw.wf
-# End time: 17:09:25 on Oct 27,2023, Elapsed time: 0:00:44
+# End time: 15:36:20 on Nov 03,2023, Elapsed time: 0:00:32
 # Errors: 0, Warnings: 0
