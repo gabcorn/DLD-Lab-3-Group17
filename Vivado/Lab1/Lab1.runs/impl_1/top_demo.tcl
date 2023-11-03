@@ -279,6 +279,9 @@ OPTRACE "route_design reports" START { REPORT }
   create_report "impl_1_route_report_bus_skew_0" "report_bus_skew -warn_on_violation -file top_demo_bus_skew_routed.rpt -pb top_demo_bus_skew_routed.pb -rpx top_demo_bus_skew_routed.rpx"
   create_report "impl_1_route_report_clock_utilization_1" "report_clock_utilization -file top_demo_clock_utilization_routed_1.rpt"
   create_report "impl_1_route_report_power_1" "report_power -file top_demo_power_routed_1.rpt -pb top_demo_power_summary_routed_1.pb -rpx top_demo_power_routed_1.rpx"
+  create_report "impl_1_route_report_utilization_0" "report_utilization -file route_report_utilization_0.rpt -pb route_report_utilization_0.pb"
+  create_report "impl_1_route_report_timing_0" "report_timing -file route_report_timing_0.rpt -rpx route_report_timing_0.rpx"
+  create_report "impl_1_route_report_power_2" "report_power -file top_demo_power_routed_2.rpt -pb top_demo_power_summary_routed_2.pb -rpx top_demo_power_routed_2.rpx"
 OPTRACE "route_design reports" END { }
 OPTRACE "Route Design: write_checkpoint" START { CHECKPOINT }
   write_checkpoint -force top_demo_routed.dcp
@@ -299,34 +302,4 @@ OPTRACE "route_design write_checkpoint" END { }
 
 OPTRACE "route_design misc" END { }
 OPTRACE "Phase: Route Design" END { }
-OPTRACE "Phase: Write Bitstream" START { ROLLUP_AUTO }
-OPTRACE "write_bitstream setup" START { }
-start_step write_bitstream
-set ACTIVE_STEP write_bitstream
-set rc [catch {
-  create_msg_db write_bitstream.pb
-OPTRACE "read constraints: write_bitstream" START { }
-OPTRACE "read constraints: write_bitstream" END { }
-  catch { write_mem_info -force -no_partial_mmi top_demo.mmi }
-OPTRACE "write_bitstream setup" END { }
-OPTRACE "write_bitstream" START { }
-  write_bitstream -force top_demo.bit 
-OPTRACE "write_bitstream" END { }
-OPTRACE "write_bitstream misc" START { }
-OPTRACE "read constraints: write_bitstream_post" START { }
-OPTRACE "read constraints: write_bitstream_post" END { }
-  catch {write_debug_probes -quiet -force top_demo}
-  catch {file copy -force top_demo.ltx debug_nets.ltx}
-  close_msg_db -file write_bitstream.pb
-} RESULT]
-if {$rc} {
-  step_failed write_bitstream
-  return -code error $RESULT
-} else {
-  end_step write_bitstream
-  unset ACTIVE_STEP 
-}
-
-OPTRACE "write_bitstream misc" END { }
-OPTRACE "Phase: Write Bitstream" END { }
 OPTRACE "impl_1" END { }
